@@ -1,0 +1,102 @@
+.navegacion {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 -2px 5px rgba(0,0,0,.05);
+    z-index: 101;
+    background-color: #fff;
+}
+
+.navegacion .enlaceNavegacion {
+  color: #a5a5a3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 5px 0;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 1px;
+}
+
+.navegacion .enlaceNavegacion i {
+    font-size: 20px;
+}
+
+.navegacion .enlaceNavegacion span{
+    font-size: 12px;
+}
+
+.navegacion .logo {
+    display: none;
+}
+
+.navegacion a.active {
+  background-color: #4CAF50;
+  color: black;
+}
+
+.navegacion img {
+    max-width: 70px;
+}
+
+.navegacion button {
+    background: transparent;
+    border: none;
+}
+
+/*Estilos tablet y ordenador*/
+@media (min-width: 770px)
+{
+    .navegacion .logo {
+        margin: 6px 0 20px;
+        display: inline-block;
+    }
+
+    .navegacion {
+        width: 100px;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        box-shadow: 10px 0 30px rgba(0,0,0,.05);
+        position: fixed;
+        align-items: center;
+        z-index: 100000;
+        padding-top: 50px;
+    }
+
+    .navegacion .enlaceNavegacion {
+      color: #a5a5a3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 100%;
+      height: 100px;
+      padding: 0;
+      text-decoration: none;
+      cursor: pointer;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+
+    .navegacion .enlaceNavegacion i {
+        font-size: 30px;
+    }
+
+    .navegacion .enlaceNavegacion span{
+        font-size: 12px;
+    }
+
+}

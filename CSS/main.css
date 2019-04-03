@@ -1,0 +1,321 @@
+body * {
+    font-family: 'Monserrat', sans-serif;
+}
+
+.contenedor {
+    padding: 0 0 0 100px;
+}
+
+.contenido {
+    padding: 0 1.5em 1.5em;
+}
+
+
+/* Vista Principal App */
+.infoApp {
+    margin: 2em auto;
+    max-width: 700px;
+}
+
+.infoApp h1, .infoApp h2 {
+    color: #1e552d;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 700;
+    line-height: 1.3em;
+    margin: 24px auto;
+}
+
+.enlacesApp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 2em auto 2em;
+}
+
+.enlaceFooter {
+    font-size: 30px;
+    line-height: 35px;
+    width: 40px;
+    transition: all 0.20s;
+    margin: 1em;
+}
+
+.enlaceFooter i {
+    vertical-align: middle;
+}
+
+.enlaceFooter.github {color: #50496d;}
+.enlaceFooter.spotify {color: #1e552d;}
+
+
+/* Estilos para las secciones de TOP y recientes */
+.topCanciones, .topArtistas, .recientes {
+    margin: 0 auto;
+    max-width: 1100px;
+    padding-bottom: 1em;
+}
+
+.listado {
+    box-shadow: 0 2px 30px rgba(80,80,80, 0.5);
+    margin: 0 auto;
+    padding: 320px 24px 5em;
+    width: 100%;
+    max-width: 1100px;
+    background: #ffffff;
+    min-height: 100vh;
+    position: relative;
+}
+
+.topCancionesIMG, .topArtistasIMG, .recientesIMG {
+    height: 40vh;
+    background-position: 50% 50% !important;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    transform-origin: 50% 0;
+    max-width: 100% !important;
+    display: block;
+}
+
+.topCancionesIMG {
+    background: url("../IMG/topCanciones.jpg");
+}
+
+.topArtistasIMG {
+    background: url("../IMG/topArtistas.jpg");
+}
+
+.recientesIMG {
+    background: url("../IMG/recientes.jpg");
+    background-position: 50% 20% !important;
+}
+
+.topTitulo, .recientesTitulo {
+    z-index: 2;
+    position: relative;
+    color: white;
+}
+
+.topContenido, .recientesContenido {
+    position: relative;
+    z-index: 3;
+}
+
+.rangosTiempo {
+    display: flex;
+    justify-content: flex-start;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+    margin: 1em;
+}
+
+.rangosTiempo button {
+    background: transparent;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 600;
+    border: none;
+    padding: 1em;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+.cancionTop, .artistaTop, .cancionReciente {
+    display: flex;
+    align-items: center;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+    animation-name: aparecer;
+    font-size: 1.2em;
+    line-height: 1.2em;
+    text-align: left;
+}
+
+.cancionTop:hover, .artistaTop:hover, .cancionReciente:hover {
+    text-decoration: none;
+    background: #f2f2f2;
+}
+
+.cancionTop *, .artistaTop *, .cancionReciente * {
+    font-family: 'Rubik', sans-serif;
+}
+
+.numOrden {
+    font-weight: 600;
+    font-size: 0.9em;
+    text-align: right;
+    flex: 30px 0;
+    margin-right: 0;
+    padding-right: 30px;
+    color: #aba5c3;
+}
+
+.infoCancion, .infoArtista {
+    display: flex;
+    align-items: center;
+    flex: 3 1;
+}
+
+.infoCancion img, .infoArtista img {
+    margin-right: 1em;
+    float: left;
+    transition: opacity .1s linear;
+}
+
+.resumen {
+    display: flex;
+    flex-direction: column;
+}
+
+.cancion, .nombreArtista {
+    margin-bottom: 0.4em;
+    color: #3a354e;
+}
+
+.separador {
+    display: none;
+}
+
+.artista, .generos {
+    /*white-space: nowrap;*/
+    color: #575b3d;
+}
+
+.imgArtista {
+    width: 64px;
+    height: 64px;
+}
+
+/* Estilos versión móvil y tablet */
+@media screen and (max-width: 770px)
+{
+    .infoApp {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .contenido {
+        padding: 0 0 1.5em;
+    }
+
+    .contenedor {
+        padding: 0 0 0 0px;
+        z-index: 90;
+        min-height: 100%;
+        position: relative;
+    }
+
+    .topTitulo, .recientesTitulo {
+        position: relative;
+        z-index: 2;
+        padding-bottom: 0.5em;
+        top: -1.20vw;
+    }
+
+    .topCancionesIMG, .topArtistasIMG, .recientesIMG {
+        height: 40vh;
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .topContenido, .recientesContenido {
+        margin: 0 -1.5em;
+        padding: 20px 1.5em;
+        min-height: 100px;
+        position: relative;
+        z-index: 3;
+        background-color: #fff;
+    }
+
+    .listado {
+        display: block;
+        padding-top: 25vh;
+    }
+
+    .cancionTop, .artistaTop, .cancionReciente {
+        padding: 1em;
+        margin: 0 -1em;
+        text-align: left;
+        font-size: 1.3em;
+        max-width: 1025px;
+        display: flex;
+        align-items: center;
+    }
+
+    .infoCancion img, .infoArtista img {
+        margin-right: 1em;
+        float: left;
+        transition: opacity .1s linear;
+        height: 64px;
+        width: 64px;
+        border-radius: 3px;
+    }
+
+    .rangosTiempo {
+        display: flex;
+        justify-content: flex-start;
+        white-space: nowrap;
+        flex-wrap: nowrap;
+        margin: -1em -0.75em 1em;
+        padding: 0;
+    }
+
+    .rangosTiempo button {
+        font-size: 0.9em;
+        padding-left: 0;
+
+    }
+}
+
+@media (min-width: 770px)
+{
+    .topCancionesIMG, .topArtistasIMG, .recientesIMG {
+        height: 50vh;
+        position: absolute;
+    }
+
+    .topContenido, .recientesContenido {
+        padding: 12vh 2em;
+    }
+
+    .rangosTiempo {
+        margin: -0.5em;
+        margin-bottom: 1em;
+    }
+
+    .rangosTiempo button {
+        font-size: 1.2em;
+    }
+
+    .cancionTop, .artistaTop, .cancionReciente {
+        padding: 1em 2em;
+        margin: 0 -2em;
+    }
+
+    .cancion, .nombreArtista {
+        font-weight: 500;
+    }
+
+}
+
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
