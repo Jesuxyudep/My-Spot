@@ -17,8 +17,6 @@ La aplicación usa los siguientes scopes de la API:
 - [Crear playlist](https://developer.spotify.com/documentation/web-api/reference/playlists/create-playlist/)
 - [Añadir canciones a playlists](https://developer.spotify.com/documentation/web-api/reference/playlists/add-tracks-to-playlist/)
 
-### Cómo crear una Aplicación dentro de Sportify
+### Cómo crear una Aplicación dentro de Spotify
 
 Logueate en https://developer.spotify.com/dashboard/, y crea una nueva aplicación.
-
-## Crédito a los autores de las fotos usadas
