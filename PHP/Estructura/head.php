@@ -18,3 +18,11 @@
 
 <script src="JS/bootstrap.js"></script>
 <script src="JS/jquery-3.3.1.min.js"></script>
+
+<!--PROGRESSIVE WEB APP-->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="green">
+<meta name="apple-mobile-web-app-title" content="MySpot">
+<link rel="apple-touch-icon" href="favicon.png">
+<meta name="msapplication-TileImage" content="favicon.png">
+<meta name="msapplication-TileColor" content="#0a5d0a">

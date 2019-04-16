@@ -140,6 +140,7 @@ body * {
 .cancionTop:hover, .artistaTop:hover, .cancionReciente:hover {
     text-decoration: none;
     background: #f2f2f2;
+    transition: .5s;
 }
 
 .cancionTop *, .artistaTop *, .cancionReciente * {
@@ -183,13 +184,58 @@ body * {
 }
 
 .artista, .generos {
-    /*white-space: nowrap;*/
+    white-space: wrap;
     color: #575b3d;
 }
 
 .imgArtista {
     width: 64px;
     height: 64px;
+}
+
+.activo * {
+    color: #1e552d;
+}
+
+.opcionesCrear {
+    margin: auto;
+}
+
+.opcionesCrear button {
+    background-color: #1e552d;
+    padding: .5em;
+    color: white;
+    border-radius: 10px;
+}
+
+.rangoActivo {
+    color: #1e552d;
+    border-bottom: 4px solid #1e552d !important;
+    trnasition: .5s;
+}
+
+.rangosTiempo button {
+    font-size: 1.2em;
+}
+
+.ajax-loader {
+    visibility: hidden;
+    background-color: rgba(255,255,255,0.7);
+    position: absolute;
+    z-index: +100 !important;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.ajax-loader div {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
 }
 
 /* Estilos versión móvil y tablet */
@@ -233,14 +279,16 @@ body * {
         margin: 0 -1.5em;
         padding: 20px 1.5em;
         min-height: 100px;
-        position: relative;
+        position: absolute;
         z-index: 3;
         background-color: #fff;
+        min-width: 100%;
     }
 
     .listado {
         display: block;
         padding-top: 25vh;
+        box-shadow: none;
     }
 
     .cancionTop, .artistaTop, .cancionReciente {
@@ -258,7 +306,8 @@ body * {
         float: left;
         transition: opacity .1s linear;
         height: 64px;
-        width: 64px;
+        min-width: 64px;
+        max-width: 64px;
         border-radius: 3px;
     }
 
@@ -274,7 +323,10 @@ body * {
     .rangosTiempo button {
         font-size: 0.9em;
         padding-left: 0;
+    }
 
+    .resumen {
+        font-size: 3.2vw;
     }
 }
 
@@ -294,10 +346,6 @@ body * {
         margin-bottom: 1em;
     }
 
-    .rangosTiempo button {
-        font-size: 1.2em;
-    }
-
     .cancionTop, .artistaTop, .cancionReciente {
         padding: 1em 2em;
         margin: 0 -2em;
@@ -307,6 +355,13 @@ body * {
         font-weight: 500;
     }
 
+}
+
+@media screen and (max-width: 900px)
+{
+    .rangosTiempo button {
+        font-size: 0.9em;
+    }
 }
 
 

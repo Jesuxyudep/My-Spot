@@ -21,6 +21,11 @@ if ( !isset($_SESSION["logueado"]) || $_SESSION["vista"] == "" )
 
 </head>
 <body>
+
+    <div class="ajax-loader">
+        <div><img src="IMG/cargando.gif"></div>
+    </div>
+
     <div class="contenedor">
         <?php require('PHP/Estructura/appNavegation.php'); ?>
         <div class="contenido">
@@ -36,11 +41,16 @@ if ( !isset($_SESSION["logueado"]) || $_SESSION["vista"] == "" )
 
     document.addEventListener("DOMContentLoaded",function() {
         $('a').click( cambiarVista );
+        $('#<?php echo $_SESSION["vista"]?>').addClass("activo");
     });
 
     function cambiarVista(event)
     {
         var vista =  $(this).attr("id");
+
+        $("a.activo").each(function() {
+            $(this).removeClass("activo");
+        })
 
         $.ajax({
             data: {"vista" : vista, "operacion" : "cambioVista"},

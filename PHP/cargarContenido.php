@@ -24,6 +24,12 @@ if ($_POST)
 
         obtenerTop("a", $_POST["rango"]);
     }
+    else if ($tarea == "crearPlaylistTop")
+    {
+        $_POST["rango"] = $_POST["tiempo"];
+
+        crearPlaylistTop($_POST["rango"]);
+    }
 }
 
 

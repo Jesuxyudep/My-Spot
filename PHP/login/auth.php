@@ -15,10 +15,13 @@
     $options = [
         'scope' => [
             'playlist-read-private',
+            'playlist-read-collaborative',
             'user-read-private',
             'user-top-read',
-            'user-read-recently-played'
-        ],
+            'user-read-recently-played',
+            'user-library-modify',
+            'playlist-modify-public'
+        ]
     ];
 
     header('Location: ' . $session->getAuthorizeUrl($options));

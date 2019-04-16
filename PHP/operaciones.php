@@ -145,4 +145,60 @@ require_once 'operaciones_sql.php';
         }
     }
 
+    function crearPlaylistTop ($rango)
+    {
+        $api = crearWebAPI();
+        $nombrePlaylist = "";
+
+        switch ($rango) {
+            case 'l':
+                $rango = "long_term";
+                $nombrePlaylist = "Mi Top 50 de todos los tiempos";
+                break;
+            case 'm':
+                $rango = "medium_term";
+                $nombrePlaylist = "Mi Top 50 de estos ultimos 6 meses";
+                break;
+            case 'c':
+                $rango = "short_term";
+                $nombrePlaylist = "Mi Top 50 de este mes";
+                break;
+            default:
+                $rango = "long_term";
+                break;
+        }
+
+        $opciones = [
+            "limit" => 50,
+            "time_range" => $rango
+        ];
+
+        $canciones = $api->getMyTop("tracks", $opciones);
+
+        $api->createPlaylist([
+            'name' => $nombrePlaylist
+        ]);
+
+        //Poner imagen a la playlist ¿?
+
+        $playlists = $api->getUserPlaylists($api->me()->id, [
+            'limit' => 50
+        ]);
+
+        foreach ($playlists->items as $playlist)
+        {
+            if ($playlist->name == $nombrePlaylist )
+            {
+                for ($a = 0; $a < count($canciones->items); $a++)
+                {
+                    $api->addPlaylistTracks($playlist->id, [
+                        $canciones->items[$a]->id
+                    ]);
+                }
+
+                break; //Salir al añadir las canciones a la nueva playlist ya encontrada
+            }
+        }
+    }
+
 ?>

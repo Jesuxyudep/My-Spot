@@ -62,15 +62,15 @@ define ("SERVER", 'localhost');
             $sql = "SELECT AccessToken, RefreshToken FROM usuarios WHERE ID = '$id'";
             $resultado = mysqli_query($enlace,$sql);
 
-            if (mysqli_num_rows($resultado) > 0)
-            {
-                $actualizar = "UPDATE usuarios SET AccessToken = '$access', RefreshToken = '$refresh' WHERE ID = '$id'";
-                $resultado = mysqli_query($enlace, $actualizar);
-            }
-            else
+            if (mysqli_num_rows($resultado) == 0)
             {
                 $insertar = "INSERT INTO usuarios (ID, AccessToken, RefreshToken) VALUES ('$id', '$access', '$refresh')";
                 $resultado = mysqli_query($enlace, $insertar);
+            }
+            else
+            {
+                $actualizar = "UPDATE usuarios SET AccessToken = '$access', RefreshToken = '$refresh' WHERE ID = '$id'";
+                $resultado = mysqli_query($enlace, $actualizar);
             }
         }
     }
