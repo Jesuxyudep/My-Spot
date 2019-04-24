@@ -30,6 +30,16 @@ if ($_POST)
 
         crearPlaylistTop($_POST["rango"]);
     }
+    else if ($tarea == "crearPlaylistTopArtistas")
+    {
+        $_POST["rango"] = $_POST["tiempo"];
+
+        crearPlaylistTopArtistas($_POST["rango"]);
+    }
+    else if ($tarea == "crearPlaylistRecientes")
+    {
+        crearPlaylistRecientes();
+    }
 }
 
 

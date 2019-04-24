@@ -23,7 +23,10 @@ if ( !isset($_SESSION["logueado"]) || $_SESSION["vista"] == "" )
 <body>
 
     <div class="ajax-loader">
-        <div><img src="IMG/cargando.gif"></div>
+        <div>
+            <img src="IMG/cargando.gif">
+            <h4>Creando tu nueva playlist favorita...</h4>
+        </div>
     </div>
 
     <div class="contenedor">
@@ -34,6 +37,8 @@ if ( !isset($_SESSION["logueado"]) || $_SESSION["vista"] == "" )
                 cargarVista($_SESSION["vista"]);
             ?>
         </div>
+
+        <button id="toTop" title="Volver arriba"><i class="fas fa-chevron-up"></i></button>
     </div>
 </body>
 
@@ -41,7 +46,9 @@ if ( !isset($_SESSION["logueado"]) || $_SESSION["vista"] == "" )
 
     document.addEventListener("DOMContentLoaded",function() {
         $('a').click( cambiarVista );
+        $("#toTop").click( volverArriba );
         $('#<?php echo $_SESSION["vista"]?>').addClass("activo");
+        window.onscroll = function() {mostrarToTop()};
     });
 
     function cambiarVista(event)
@@ -57,6 +64,24 @@ if ( !isset($_SESSION["logueado"]) || $_SESSION["vista"] == "" )
             url: "PHP/cargarContenido.php",
             type: "post"
         });
+    }
+
+    function mostrarToTop ()
+    {
+          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20)
+          {
+            $("#toTop").show();
+          }
+          else
+          {
+            $("#toTop").hide();
+          }
+    }
+
+    function volverArriba ()
+    {
+        document.body.scrollTop = 0; //Safari
+        document.documentElement.scrollTop = 0; //Chrome, Firefox, IE y Opera
     }
 
 </script>

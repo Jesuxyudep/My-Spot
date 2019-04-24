@@ -1,15 +1,40 @@
+html {
+    scroll-behavior: smooth;
+}
+
 body * {
     font-family: 'Monserrat', sans-serif;
 }
 
 .contenedor {
-    padding: 0 0 0 100px;
+    padding: 70px 0;
 }
 
 .contenido {
     padding: 0 1.5em 1.5em;
 }
 
+#toTop {
+    display: none;
+    position: fixed;
+    bottom: 15px;
+    right: 30px;
+    z-index: 100000000;
+    border: none;
+    outline: none;
+    border-radius: 100px;
+    color: white;
+    background-color: #1e552d;
+    padding: 10px 15px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+#toTop:hover {
+    background-color: white;
+    color: black;
+    transition: .3s;
+}
 
 /* Vista Principal App */
 .infoApp {
@@ -50,24 +75,24 @@ body * {
 
 
 /* Estilos para las secciones de TOP y recientes */
-.topCanciones, .topArtistas, .recientes {
+.topCanciones, .topArtistas, .recientes, .administrar {
     margin: 0 auto;
-    max-width: 1100px;
+    max-width: 1400px;
     padding-bottom: 1em;
 }
 
 .listado {
     box-shadow: 0 2px 30px rgba(80,80,80, 0.5);
     margin: 0 auto;
-    padding: 320px 24px 5em;
+    padding: 340px 24px 2em;
     width: 100%;
-    max-width: 1100px;
+    max-width: 1400px;
     background: #ffffff;
     min-height: 100vh;
     position: relative;
 }
 
-.topCancionesIMG, .topArtistasIMG, .recientesIMG {
+.topCancionesIMG, .topArtistasIMG, .recientesIMG, .administrarIMG {
     height: 40vh;
     background-position: 50% 50% !important;
     position: fixed;
@@ -95,26 +120,31 @@ body * {
     background-position: 50% 20% !important;
 }
 
-.topTitulo, .recientesTitulo {
+.administrarIMG {
+    background: url("../IMG/administrar.jpg");
+    background-position: 50% 20% !important;
+}
+
+.topTitulo, .recientesTitulo, .administrarTitulo {
     z-index: 2;
     position: relative;
     color: white;
 }
 
-.topContenido, .recientesContenido {
+.topContenido, .recientesContenido, .administrarContenido {
     position: relative;
     z-index: 3;
 }
 
 .rangosTiempo {
     display: flex;
-    justify-content: flex-start;
     white-space: nowrap;
     flex-wrap: nowrap;
     margin: 1em;
 }
 
-.rangosTiempo button {
+.rangosTiempo button,
+.recientesCrear button {
     background: transparent;
     font-family: 'Rubik', sans-serif;
     font-weight: 600;
@@ -125,7 +155,7 @@ body * {
     cursor: pointer;
 }
 
-.cancionTop, .artistaTop, .cancionReciente {
+.cancionTop, .artistaTop, .cancionReciente, .playlist {
     display: flex;
     align-items: center;
     animation-duration: 1s;
@@ -137,13 +167,13 @@ body * {
     text-align: left;
 }
 
-.cancionTop:hover, .artistaTop:hover, .cancionReciente:hover {
+.cancionTop:hover, .artistaTop:hover, .cancionReciente:hover, .playlist:hover {
     text-decoration: none;
     background: #f2f2f2;
     transition: .5s;
 }
 
-.cancionTop *, .artistaTop *, .cancionReciente * {
+.cancionTop *, .artistaTop *, .cancionReciente *, .playlist * {
     font-family: 'Rubik', sans-serif;
 }
 
@@ -157,13 +187,13 @@ body * {
     color: #aba5c3;
 }
 
-.infoCancion, .infoArtista {
+.infoCancion, .infoArtista, .infoPlaylist {
     display: flex;
     align-items: center;
     flex: 3 1;
 }
 
-.infoCancion img, .infoArtista img {
+.infoCancion img, .infoArtista img, .infoPlaylist img {
     margin-right: 1em;
     float: left;
     transition: opacity .1s linear;
@@ -174,7 +204,7 @@ body * {
     flex-direction: column;
 }
 
-.cancion, .nombreArtista {
+.cancion, .nombreArtista, .nomPlaylist {
     margin-bottom: 0.4em;
     color: #3a354e;
 }
@@ -183,12 +213,12 @@ body * {
     display: none;
 }
 
-.artista, .generos {
+.artista, .generos, .propietario {
     white-space: wrap;
     color: #575b3d;
 }
 
-.imgArtista {
+.imgArtista, .infoPlaylist img {
     width: 64px;
     height: 64px;
 }
@@ -198,10 +228,11 @@ body * {
 }
 
 .opcionesCrear {
-    margin: auto;
+    margin-left: auto;
 }
 
-.opcionesCrear button {
+.opcionesCrear button,
+.recientesCrear button {
     background-color: #1e552d;
     padding: .5em;
     color: white;
@@ -214,7 +245,8 @@ body * {
     trnasition: .5s;
 }
 
-.rangosTiempo button {
+.rangosTiempo button,
+.recientesCrear button {
     font-size: 1.2em;
 }
 
@@ -238,6 +270,10 @@ body * {
     justify-content: center;
 }
 
+.recientesCrear {
+    margin-top: 3.5vh;
+}
+
 /* Estilos versión móvil y tablet */
 @media screen and (max-width: 770px)
 {
@@ -258,14 +294,14 @@ body * {
         position: relative;
     }
 
-    .topTitulo, .recientesTitulo {
+    .topTitulo, .recientesTitulo, .administrarTitulo {
         position: relative;
         z-index: 2;
         padding-bottom: 0.5em;
         top: -1.20vw;
     }
 
-    .topCancionesIMG, .topArtistasIMG, .recientesIMG {
+    .topCancionesIMG, .topArtistasIMG, .recientesIMG, .administrarIMG {
         height: 40vh;
         position: fixed;
         left: 0;
@@ -275,7 +311,7 @@ body * {
         background-repeat: no-repeat;
     }
 
-    .topContenido, .recientesContenido {
+    .topContenido, .recientesContenido, .administrarContenido {
         margin: 0 -1.5em;
         padding: 20px 1.5em;
         min-height: 100px;
@@ -301,7 +337,7 @@ body * {
         align-items: center;
     }
 
-    .infoCancion img, .infoArtista img {
+    .infoCancion img, .infoArtista img, .infoPlaylist img {
         margin-right: 1em;
         float: left;
         transition: opacity .1s linear;
@@ -328,30 +364,34 @@ body * {
     .resumen {
         font-size: 3.2vw;
     }
+
+    .recientesCrear,
+    .recientesCrear button {
+        width: 100%;
+    }
 }
 
 @media (min-width: 770px)
 {
-    .topCancionesIMG, .topArtistasIMG, .recientesIMG {
+    .topCancionesIMG, .topArtistasIMG, .recientesIMG, .administrarIMG {
         height: 50vh;
         position: absolute;
     }
 
-    .topContenido, .recientesContenido {
+    .topContenido, .recientesContenido, .administrarContenido {
         padding: 12vh 2em;
     }
 
     .rangosTiempo {
-        margin: -0.5em;
         margin-bottom: 1em;
     }
 
-    .cancionTop, .artistaTop, .cancionReciente {
+    .cancionTop, .artistaTop, .cancionReciente, .playlist {
         padding: 1em 2em;
         margin: 0 -2em;
     }
 
-    .cancion, .nombreArtista {
+    .cancion, .nombreArtista, .nomPlaylist {
         font-weight: 500;
     }
 

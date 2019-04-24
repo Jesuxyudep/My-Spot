@@ -4,6 +4,9 @@
         <a class="logo" id="App" href="">
             <img src="IMG/logo.png" alt="MySpot">
         </a>
+        <a id="App" href="">
+            <h1>MySpot</h1>
+        </a>
         <a class="enlaceNavegacion" id="TopCanciones" href="">
             <i class="far fa-heart"></i>
             <span class="etiquetaNavegacion">Top Canciones</span>

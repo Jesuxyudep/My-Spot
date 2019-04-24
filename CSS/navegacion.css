@@ -33,7 +33,8 @@
     font-size: 12px;
 }
 
-.navegacion .logo {
+.navegacion .logo,
+.navegacion h1 {
     display: none;
 }
 
@@ -55,40 +56,44 @@
 @media (min-width: 770px)
 {
     .navegacion .logo {
-        margin: 6px 0 20px;
         display: inline-block;
+        margin-left: 1vw;
+    }
+
+    .navegacion h1 {
+        display: inline-block;
+        font-size: 2rem;
+        font-weight: bold;
+        font-style: italic;
+        margin-bottom: 0;
+        color: #1e552d;
     }
 
     .navegacion {
-        width: 100px;
+        width: auto;
         left: 0;
         top: 0;
-        bottom: 0;
-        height: auto;
+        height: 70px;
         display: flex;
-        flex-direction: column;
         justify-content: start;
         box-shadow: 10px 0 30px rgba(0,0,0,.05);
         position: fixed;
         align-items: center;
         z-index: 100000;
-        padding-top: 50px;
     }
 
     .navegacion .enlaceNavegacion {
       color: #a5a5a3;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      width: 100%;
-      height: 100px;
+      width: 15%;
+      height: 70px;
       padding: 0;
       text-decoration: none;
       cursor: pointer;
-      margin-left: 5px;
-      margin-right: 5px;
+    }
+
+    #TopCanciones {
+        margin-left: 5% !important;
     }
 
     .navegacion .enlaceNavegacion i {

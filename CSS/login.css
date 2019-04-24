@@ -1,4 +1,4 @@
-.login {
+/*.login {
   text-align: left;
   padding: 0 2em;
   background: #f9adac;
@@ -160,4 +160,104 @@
         padding: 4em;
         position: static;
     }
+}*/
+
+body,html {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+    background: url("../IMG/fondoInicio.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.contenedor, .contenido {
+    height: 100%;
+}
+
+.infoLogin {
+	height: 400px;
+	width: 350px;
+	margin-top: auto;
+	margin-bottom: auto;
+	background: #1e552d;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	padding: 10px;
+	box-shadow: 0 14px 18px 0 rgba(0, 0, 0, 0.9), 0 16px 20px 0 rgba(0, 0, 0, 0.69);
+	-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 5px;
+}
+
+.infoLogin h1 {
+    font-size: 2.2em;
+    color: #fff;
+    text-align: center;
+}
+
+.logoContainer {
+	position: absolute;
+	height: 170px;
+	width: 170px;
+	top: -75px;
+	border-radius: 50%;
+	padding: 10px;
+	text-align: center;
+}
+
+.logo {
+	height: 150px;
+	width: 150px;
+	border-radius: 50%;
+}
+
+.tituloContainer {
+	margin-top: 100px;
+}
+
+.btn-login {
+    width: auto;
+    margin: 0 auto;
+    background-color: #fff !important;
+    border-color: #fff !important;
+    display: block !important;
+    color: black !important;
+    text-align: center !important;
+    font-size: 1.2em !important;
+    border-width: 0 !important;
+    border-style: solid !important;
+    border-radius: 50px !important;
+    white-space: nowrap !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    box-shadow: 0 10px 20px rgba(0,0,0,.075);
+    transition: all .15s;
+    font-family: Rubik,sans-serif;
+}
+
+.btn-login a {
+    color: black !important;
+}
+
+.btn-login:focus {
+	box-shadow: none !important;
+	outline: 0px !important;
+}
+
+.btn-link {
+    font-size: 1.1em;
+    width: 100%;
+    text-align: center;
+    color: #fff !important;
+    text-decoration: underline !important;
+    background: transparent;
+    font-weight: 700 !important;
+}
+
+.loginContainer {
+	padding: 0 2rem;
 }

@@ -1,11 +1,19 @@
 <?php
-    require_once 'PHP/resources/vendor/autoload.php';
-    require_once 'PHP/operaciones_sql.php';
+    require_once 'PHP/operaciones.php';
 ?>
 
 <div>
-    <div class="infoApp">
-        <h1>MySpot - Cambia cómo descubres nueva música</h1>
-
+    <div class="administrar">
+        <div class="listado">
+            <div class="administrarIMG"></div>
+            <h1 class="administrarTitulo">Administrar mis playlists</h1>
+            <div class="administrarContenido">
+                <div class="administrarListado">
+                    <?php
+                        obtenerPlaylists();
+                    ?>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
