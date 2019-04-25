@@ -16,8 +16,8 @@
 <meta name="description" content="MySpot, cambia la manera en la que descubres nueva música">
 <link rel="icon" sizes="192x192" href="favicon.png">
 
-<script src="JS/bootstrap.js"></script>
 <script src="JS/jquery-3.3.1.min.js"></script>
+<script src="JS/bootstrap.js"></script>
 
 <!--PROGRESSIVE WEB APP-->
 <meta name="apple-mobile-web-app-capable" content="yes">

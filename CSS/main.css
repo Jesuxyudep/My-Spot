@@ -42,7 +42,7 @@ body * {
     max-width: 700px;
 }
 
-.infoApp h1, .infoApp h2 {
+.infoApp h1, .infoApp h2, .modal-header h1, .modal-body h2{
     color: #1e552d;
     font-family: 'Rubik', sans-serif;
     font-weight: 700;
@@ -55,7 +55,7 @@ body * {
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin: 2em auto 2em;
+    margin: 2em auto 2em !important;
 }
 
 .enlaceFooter {

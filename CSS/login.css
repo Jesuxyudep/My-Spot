@@ -1,167 +1,3 @@
-/*.login {
-  text-align: left;
-  padding: 0 2em;
-  background: #f9adac;
-  overflow: hidden;
-  display: -ms-flexbox;
-  display: flex;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-}
-
-.login h1{
-  color: #fff;
-  margin: 20vh 0 40vh;
-  padding: 0; }
-
-.login .icono {
-  display: none;
-}
-
-.login .content {
-  position: relative;
-  z-index: 2;
-}
-
-.login .background {
-  position: absolute;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  background: url("../IMG/fondo2.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  opacity: 1;
-}
-
-.btn-login {
-    width: auto;
-    margin: 0 auto;
-    background-color: #fff !important;
-    border-color: #fff !important;
-    display: block !important;
-    color: black !important;
-    text-align: center !important;
-    font-size: 1.2em !important;
-    border-width: 0 !important;
-    border-style: solid !important;
-    border-radius: 50px !important;
-    white-space: nowrap !important;
-    font-weight: 700 !important;
-    cursor: pointer !important;
-    box-shadow: 0 10px 20px rgba(0,0,0,.075);
-    transition: all .15s;
-    font-family: Rubik,sans-serif;
-}
-
-.btn-login a {
-    color: black !important;
-}
-
-.btn-link {
-    font-size: 1.1em;
-    display: block;
-    width: 100%;
-    padding: 1em 0;
-    text-align: center;
-    border: none;
-    color: #fff !important;
-    text-decoration: underline !important;
-    background: transparent;
-    font-weight: 700 !important;
-    margin-top: 1em;
-}
-
-@media (min-width: 768px)
-{
-  .login .content {
-    max-width: 1025px;
-    margin: 0 auto;
-  }
-
-  .login .icono {
-    position: absolute;
-    left: 20px;
-    top: 45px;
-    z-index: 99;
-    opacity: 0.9;
-    display: block;
-    color: #9ee2d9;
-    font-weight: 900;
-  }
-
-  .login__app-icon img {
-      max-width: 60px;
-   }
-
- }
-
-@media (max-width: 769px) and (orientation: landscape)
-{
-     .login .content {
-        margin: 0 auto;
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        padding: 0 15%;
-        overflow-y: auto;
-    }
-
-  .login h1 {
-    margin-bottom: 45vh;
-    }
-}
-
-@media (min-width: 769px) and (orientation: landscape)
-{
-  .login h1 {
-    margin: 10vh 0 65vh;
-  }
-  .btn-link {
-    text-align: center;
-  }
-}
-
-@media (max-width: 1100px) and (orientation: landscape)
-{
-  .login h1 {
-    margin-bottom: 60vh;
-  }
-
-  .login .content {
-    max-width: 1025px;
-    margin: 0 auto;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    padding: 0 15vw;
-    overflow-y: auto;
-    text-align: center;
-  }
-}
-
-@media (max-width: 769px)
-{
-    .login {
-        padding: 4em;
-        position: static;
-    }
-}*/
-
 body,html {
 	margin: 0;
 	padding: 0;
@@ -243,9 +79,14 @@ body,html {
     color: black !important;
 }
 
-.btn-login:focus {
-	box-shadow: none !important;
-	outline: 0px !important;
+.btn-login:hover {
+	box-shadow: 0px 3px 56px -8px rgba(0,0,0,0.92);
+	background-color: #ffc700 !important;
+	transition: .7s;
+}
+
+.btn-login a:hover {
+	text-decoration: none !important;
 }
 
 .btn-link {
