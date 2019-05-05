@@ -52,6 +52,53 @@
     border: none;
 }
 
+.perfil {
+    display: inline-flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+}
+
+.perfil img {
+    border-radius: 50%;
+}
+
+.dropdown-menu-right {
+    box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 4px 0 18px 0;
+    right: 5vw;
+}
+
+.dropdown-menu-right li {
+    text-align: left;
+    height: 30px;
+}
+
+.dropdown-menu-right i {
+    margin-right: 5px;
+}
+
+.dropdown-menu-right a,
+.dropdown-menu-right span {
+    letter-spacing: 0;
+    font-size: 14px;
+    color: #000;
+    text-align: left !important;
+    padding: 10px 15px 10px 15px;
+    white-space: nowrap;
+    font-weight: 700;
+    display: block;
+}
+
+.dropdown-menu-right a:hover,
+.dropdown-menu-right span:hover{
+    color: #1e552d;
+    text-decoration: none;
+    transition: .5s;
+    cursor: pointer;
+}
+
 /*Estilos tablet y ordenador*/
 @media (min-width: 770px)
 {
@@ -79,7 +126,7 @@
         box-shadow: 10px 0 30px rgba(0,0,0,.05);
         position: fixed;
         align-items: center;
-        z-index: 100000;
+        z-index: 100;
     }
 
     .navegacion .enlaceNavegacion {
@@ -104,4 +151,93 @@
         font-size: 12px;
     }
 
+    .perfil {
+        margin-left: 12vw
+    }
+
+    .perfil img {
+        margin-right: 12px;
+    }
+
+    .perfil span {
+        font-size: 16px;
+        font-weight: 700;
+        margin-right: 2vw;
+    }
+
+    .dropdown-menu-right {
+        box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.2);
+        margin-top: -5px;
+        border-radius: 5px;
+        padding: 4px 0 18px 0;
+        right: 5vw;
+    }
+
+    .dropdown-menu-right li {
+        text-align: left;
+        height: 30px;
+    }
+
+    .dropdown-menu-right i {
+        margin-right: 5px;
+    }
+
+    .dropdown-menu-right a,
+    .dropdown-menu-right span {
+        letter-spacing: 0;
+        font-size: 14px;
+        color: #000;
+        text-align: left !important;
+        padding: 10px 15px 10px 15px;
+        white-space: nowrap;
+        font-weight: 700;
+        display: block;
+    }
+
+    .dropdown-menu-right a:hover,
+    .dropdown-menu-right span:hover {
+        color: #1e552d;
+        text-decoration: none;
+        transition: .5s;
+        cursor: pointer;
+    }
+
+    .dropdown-menu:before {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-left: 16px solid transparent;
+        border-right: 16px solid transparent;
+        border-bottom: 16px solid #FFF;
+        top: -14px;
+        right: 7px;
+    }
+
+    .inicio {
+        display: none !important;
+    }
+}
+
+/*Estilos de móvil y tablet*/
+@media screen and (max-width: 769px)
+{
+    .perfil span {
+        display: none;
+    }
+
+    .perfil img {
+        width: 35px;
+        height: 35px;
+    }
+
+    .dropdown-menu {
+        bottom: 100%;
+        top: auto;
+    }
+
+    .inicio {
+        display: block;
+    }
 }

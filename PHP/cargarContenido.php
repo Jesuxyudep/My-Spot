@@ -24,21 +24,41 @@ if ($_POST)
 
         obtenerTop("a", $_POST["rango"]);
     }
-    else if ($tarea == "crearPlaylistTop")
+    else if ($tarea == "cargarOpcionesCanciones")
     {
-        $_POST["rango"] = $_POST["tiempo"];
-
-        crearPlaylistTop($_POST["rango"]);
+        cargarOpcionesCanciones();
     }
-    else if ($tarea == "crearPlaylistTopArtistas")
+    else if ($tarea == "cargarOpcionesListas")
     {
-        $_POST["rango"] = $_POST["tiempo"];
-
-        crearPlaylistTopArtistas($_POST["rango"]);
+        $_SESSION["canciones"] = $_POST["canciones"];
+        cargarOpcionesPlaylists();
     }
-    else if ($tarea == "crearPlaylistRecientes")
+    else if ($tarea == "cargarSeleccionCancionesRecientes")
     {
-        crearPlaylistRecientes();
+        $_SESSION["playlist"] = $_POST["playlist"];
+        $_SESSION["nombrePlaylist"] = $_POST["nombrePlaylist"];
+        cargarSeleccionCancionesRecientes();
+    }
+    else if ($tarea == "cargarSeleccionTopCanciones")
+    {
+        $_SESSION["playlist"] = $_POST["playlist"];
+        $_SESSION["nombrePlaylist"] = $_POST["nombrePlaylist"];
+        $_SESSION["rango"] = $_POST["tiempo"];
+
+        cargarSeleccionTop('c', $_SESSION["rango"]);
+    }
+    else if ($tarea == "cargarSeleccionTopArtistas")
+    {
+        $_SESSION["playlist"] = $_POST["playlist"];
+        $_SESSION["nombrePlaylist"] = $_POST["nombrePlaylist"];
+        $_SESSION["rango"] = $_POST["tiempo"];
+
+        cargarSeleccionTop('a', $_SESSION["rango"]);
+    }
+    else if ($tarea == "crearPlaylist")
+    {
+        $_SESSION["cancionesSeleccionadas"] = $_POST["cancionesSeleccionadas"];
+        crearPlaylist();
     }
 }
 

@@ -17,34 +17,44 @@
 
 
  		  <h2>Spotify access</h2>
-               <p>La aplicación requiere una cuenta de Spotify. También necesita tener acceso a tu cuenta de Spotify. La aplicación funciona tanto en cliente como en servidor y solamente almacenaremos los datos estrictamente necesarios.</p>
+               <p>MySpot recupera datos de tu cuenta de Spotify para funcionar, por lo que necesita tener acceso a tu cuenta de Spotify.</p>
 
-           <h2>He entrado con una cuenta de Spotify equivocada</h2>
-               <p>No te preocupes, sólo tienes que ir a <a href="http://accounts.spotify.com/" target="_blank" rel="noopener noreferrer">accounts.spotify.com</a> y pulsar el botón Cerrar sesión. A continuación, vuelve a <a href="">MySpot.es</a> e inicia sesión con tu cuenta.</p>
+               <h2>He entrado con una cuenta de Spotify equivocada</h2>
+                   <p>No te preocupes, sólo tienes que pulsar en el botón de cerrar sesión de tu perfil que te llevará a <a href="http://accounts.spotify.com/" target="_blank" rel="noopener noreferrer">accounts.spotify.com</a> donde debes pulsar el botón Cerrar sesión. <br> A continuación, vuelve a <a href="http://myspot.epizy.com/">MySpot</a> e inicia sesión con tu cuenta.</p>
 
-           <h2>Privacidad</h2>
-               <p>La aplicación almacena tu ID de Spotify para conocerte en el futuro junto con tu
-               "tokens" para ofrecerte un mejor servicio. Si tienes algún inconveniente o duda puedes enviar un mensaje a <a href="">privacidad@myspot.com</a></p>
+               <h2>Privacidad</h2>
+                   <p>MySpot guarda los mínimos datos personales necesarios para poder identificarte cuando accedas en un futuro. Si tienes algún inconveniente o quieres obtener más información contacta con nosotros a través del siguiente correo: <a href="mailto:privacidad@myspot.com">privacidad@myspot.com</a></p>
 
          </div>
 
          <!-- Modal footer -->
          <div class="modal-footer">
  			<div class="enlacesApp">
- 	            <a class="enlaceFooter github" href="">
- 	                <i class="fab fa-github"></i>
- 	            </a>
- 	            <a class="enlaceFooter spotify" href="">
- 	                <i class="fab fa-spotify"></i>
- 	            </a>
- 	            <a class="enlaceFooter twitter" href="">
- 	                <i class="fab fa-twitter"></i>
- 	            </a>
- 	            <a class="enlaceFooter fwitter" href="https://fwitter.net/">
- 	                <img src="IMG/Fwitter30.png">
- 	            </a>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-3 col-sm-3">
+                            <a class="enlaceFooter github" href="">
+             	                <i class="fab fa-github"></i>
+             	            </a>
+                        </div>
+                        <div class="col-3 col-sm-3">
+             	            <a class="enlaceFooter spotify" href="">
+             	                <i class="fab fa-spotify"></i>
+             	            </a>
+                        </div>
+                        <div class="col-3 col-sm-3">
+             	            <a class="enlaceFooter twitter" href="">
+             	                <i class="fab fa-twitter"></i>
+             	            </a>
+                        </div>
+                        <div class="col-3 col-sm-3">
+             	            <a class="enlaceFooter fwitter" href="https://fwitter.net/">
+             	                <img src="IMG/Fwitter30.png">
+             	            </a>
+                        </div>
+                    </div>
+                </div>
  	        </div>
-           	<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
          </div>
 
        </div>

@@ -2,7 +2,7 @@ body,html {
 	margin: 0;
 	padding: 0;
 	height: 100%;
-    background: url("../IMG/fondoInicio.jpg");
+    background-image: url("../IMG/fondoInicio.jpg") !important;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -101,4 +101,16 @@ body,html {
 
 .loginContainer {
 	padding: 0 2rem;
+}
+
+
+@media screen and (max-width: 770px)
+{
+	.modal-backdrop {
+		z-index: auto;
+	}
+
+	h1 {
+		font-size: 2em;
+	}
 }

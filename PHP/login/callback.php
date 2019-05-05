@@ -1,8 +1,8 @@
 <?php
-session_start();
+require_once '../resources/vendor/autoload.php';
+require_once '../operaciones_sql.php';
 
-    require_once '../resources/vendor/autoload.php';
-    require_once '../operaciones_sql.php';
+session_start();
 
     //Crear una nueva sesion de trabajo usando las credenciales de la aplicacion registrada en Developers
     $credenciales = recuperarCredenciales();
@@ -31,11 +31,15 @@ session_start();
     //Registrar datos del usuario o actualizarlos (tokens)
     checkUsuario($_SESSION["id"], $accessToken, $refreshToken);
 
+    //Almaceno la sesión de trabajo para poder evaluar el tiempo de validez del token y ver así si tengo que refrescarlo o no
+    $_SESSION["sesion"] = $session;
+
     //Volver al index indicando que se cargue la vista de la página principal e indicando que el usuario se ha logueado
     $_SESSION["vista"] = "App";
+    $_SESSION["bckpVista"] = $_SESSION["vista"];
     $_SESSION["logueado"] = "Loggued";
 
     header('Location: ../../');
-    die();
+    //die();
 
 ?>
