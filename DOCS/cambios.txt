@@ -1,0 +1,20 @@
+Incluir citas en los apartados necesarios
+Incluir en tecnologías la API de Spotify y la librería que la adapta a PHP
+
+Guía de administrador - Dashboard Spotify for developers
+
+
+Puntos al final de funcionalidades en el inicio
+
+Modal al crear la playlist que muestre la nueva playlist con lo visto
+de iframe.
+
+Sustitur caratulas por reproductores de iframe 
+<iframe src="../embed" allow="encrypted-media"
+
+campo de texto al pedir nombre playlist nueva
+
+Texto funcionalidades del inicio sustituirlo por imágenes con el texto
+
+Revisar y cambiar textos del inicio
+
