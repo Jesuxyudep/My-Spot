@@ -57,8 +57,28 @@
         $('#inicios').addClass("rangoActivo");
 
         $('#añadirCanciones').click( opcionesCancionesPlaylist );
-        $('.infoAlert').click( ocultarInfoAlert );
-    });
+        $('.infoAlert').click( ocultarInfoAlert );
+
+        $('.artistaTop').click( cargarArtista );
+    });
+
+    function cargarArtista ()
+    {
+        var idArtista = $(this).attr('artista');
+        elemento =  $(this).find('img');
+        resumen =  $(this).find('.resumen');
+
+        $.ajax({
+            data: {"artista" : idArtista, "operacion" : "cargarArtista"},
+            url: "PHP/cargarContenido.php",
+            type: "post",
+            dataType: 'html',
+            success: function (respuesta) {
+                elemento.replaceWith( respuesta );
+                resumen.css("margin-left", "1em");
+            }
+        });
+    }
 
     function cambiarRango(event)
     {
@@ -92,7 +112,8 @@
             dataType: 'html',
             success: function (respuesta) {
                 $(".topListado a").remove();
-                $(".topListado").append(respuesta);
+                $(".topListado").append(respuesta);
+                $('.artistaTop').click( cargarArtista )
             }
         });
     }
@@ -127,7 +148,8 @@
                 $('.modal-backdrop.fade.show').css('display', 'none');
 
                 $('div.playlist').click( cargarSeleccionCanciones );
-                $('div.nuevaPlaylist').click( cargarSeleccionCanciones );
+                $('div.nuevaPlaylist i').click( cargarSeleccionCanciones );
+                $('div.nuevaPlaylist span').click( cargarSeleccionCanciones );
             }
         });
     }
@@ -140,9 +162,9 @@
         if ( $(this).attr("class") == "nuevaPlaylist" )
         {
             playlist = "nueva";
-            nomPlaylist = prompt("Indica el nombre de tu nueva Playlist", "Mi TOP de artistas - MySpot");
+            nomPlaylist = $('#nombreNuevaPlaylist').val();
 
-            if (nomPlaylist == null)
+            if (nomPlaylist == null || nomPlaylist == undefined || nomPlaylist == "")
             {
                 nomPlaylist = "Mi TOP de Artistas - MySpot";
             }

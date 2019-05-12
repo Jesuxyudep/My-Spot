@@ -17,8 +17,8 @@
 <link rel="icon" sizes="192x192" href="favicon.png">
 
 <script src="JS/jquery-3.3.1.min.js"></script>
-<script src="JS/bootstrap.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+<script src="JS/bootstrap.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
 
 
 <!--PROGRESSIVE WEB APP-->

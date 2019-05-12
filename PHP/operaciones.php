@@ -26,6 +26,27 @@ require_once 'operaciones_sql.php';
         return $api;
     }
 
+    function iframeCancion ()
+    {
+        $idCancion = $_SESSION["cancionReproducir"];
+
+        echo "<iframe src='https://open.spotify.com/embed/track/" . $idCancion . "' allow='encrypted-media' width='80' height='80'></iframe>";
+    }
+
+    function iframeArtista ()
+    {
+        $idArtista = $_SESSION["artistaReproducir"];
+
+        echo "<iframe src='https://open.spotify.com/embed/artist/" . $idArtista . "' allow='encrypted-media' width='80' height='80'></iframe>";
+    }
+
+    function iframeInicio ()
+    {
+        $idCancion = $_SESSION["cancionReproducir"];
+
+        echo "<iframe src='https://open.spotify.com/embed/track/" . $idCancion . "' allow='encrypted-media' width='280' height='80'></iframe>";
+    }
+
     //Obtener informacion sobre el top de canciones del usuario en diferentes terms de tiempo
     function obtenerTop ($contenido, $rango)
     {
@@ -70,7 +91,7 @@ require_once 'operaciones_sql.php';
             for ($a = 0; $a < count($dataUser->items); $a++)
             {
                 //Para cada elemento generamos la Estructura
-                echo "<a class='cancionTop' target='_blank'  href='" . $dataUser->items[$a]->external_urls->spotify . "'>";
+                echo "<a class='cancionTop' cancion='" . $dataUser->items[$a]->id . "'>";
                     echo "<span class='numOrden'>" . ($a + 1) . "</span>";
                     echo "<span class='infoCancion'>";
                         echo "<img src='" . $dataUser->items[$a]->album->images[2]->url . "'>";
@@ -90,7 +111,7 @@ require_once 'operaciones_sql.php';
                 $generos = 0;
 
                 //Para cada elemento generamos la Estructura
-                echo "<a class='artistaTop' target='_blank'  href='" . $dataUser->items[$a]->external_urls->spotify . "'>";
+                echo "<a class='artistaTop' artista='" . $dataUser->items[$a]->id . "'>";
                     echo "<span class='numOrden'>" . ($a + 1) . "</span>";
                     echo "<span class='infoArtista'>";
                         echo "<img class='imgArtista' src='" . $dataUser->items[$a]->images[2]->url . "'>";
@@ -138,7 +159,7 @@ require_once 'operaciones_sql.php';
         for ($a = 0; $a < count($dataUser->items); $a++)
         {
             //Para cada elemento generamos la Estructura
-            echo "<a class='cancionReciente' target='_blank'  href='" . $dataUser->items[$a]->track->external_urls->spotify . "'>";
+            echo "<a class='cancionReciente' cancion='" . $dataUser->items[$a]->track->id . "'>";
                 echo "<span class='numOrden'>" . ($a + 1) . "</span>";
                 echo "<span class='infoCancion'>";
                     echo "<img src='" . $dataUser->items[$a]->track->album->images[2]->url . "'>";
@@ -230,8 +251,8 @@ require_once 'operaciones_sql.php';
              $playlists = $api->getFeaturedPlaylists($opciones);
 
              echo "<div class='container'>";
-                echo "<h2 style='text-align: center' class='tituloInicio'>Playlists destacadas en España:</h2>";
-                echo "<div class='container' style='text-align: center; margin-bottom: 15px;'><strong style='text-align: center; font-size: 1.4em'>Listas de reproducción destacadas por Spotify en el día de hoy:</strong></div>";
+                echo "<h2 style='text-align: center' class='tituloInicio'>Playlists destacadas a nivel nacional:</h2>";
+                echo "<div class='container' style='text-align: center; margin-bottom: 15px;'><strong style='text-align: center; font-size: 1.4em'>Spotify te recomienda escuchar en el día de hoy:</strong></div>";
                 echo "<section class='customer-logos slider'>";
                      foreach ($playlists->playlists->items as $playlist)
                      {
@@ -281,14 +302,14 @@ require_once 'operaciones_sql.php';
                  echo "<div class='container contenedorRecomendaciones'>";
                     echo "<ul class='row recomendacionesGrid'>";
 
-                         foreach ($recomendaciones->tracks as $cancion)
-                         {
-                             echo "<li class='col-6 col-sm-4 col-md-3'>";
-                                 echo "<a href='" . $cancion->external_urls->spotify . "' data-overlay-text='" . $cancion->name . "'>";
-                                     echo "<img src='" . $cancion->album->images[1]->url . "' class='overlay-img'/>";
-                                echo "</a>";
-                            echo "</li>";
-                         }
+                        foreach ($recomendaciones->tracks as $cancion)
+                        {
+                            echo "<li class='col-6 col-sm-4 col-md-3'>";
+                                echo "<a class='recomendacion' data-overlay-text='" . $cancion->name . "' cancion='" . $cancion->id ."'>";
+                                    echo "<img src='" . $cancion->album->images[1]->url . "' class='overlay-img'/>";
+                               echo "</a>";
+                           echo "</li>";
+                        }
 
                     echo "</ul>";
                 echo "</div>";
@@ -441,8 +462,9 @@ require_once 'operaciones_sql.php';
                     <div class="modal-body">
 
                         <div class="nuevaPlaylist">
-                            <i class="fas fa-plus-circle"></i>
-                            <span>Crear una nueva Playlist</span>
+                            <input type="text" id="nombreNuevaPlaylist" placeholder="Nombre de tu nueva Playlist">
+                            <i class="fas fa-plus-circle nuevaPlaylist"></i>
+                            <span class="nuevaPlaylist">Crear una nueva Playlist</span>
                         </div>
                         <hr>
                     ';
@@ -723,11 +745,6 @@ require_once 'operaciones_sql.php';
                           </div>
                         </div>
                       </div>';
-
-
-
-
-
      }
 
      function cargarSeleccionTopArtistas ($rango)

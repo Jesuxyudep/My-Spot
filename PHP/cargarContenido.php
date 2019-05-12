@@ -60,6 +60,21 @@ if ($_POST)
         $_SESSION["cancionesSeleccionadas"] = $_POST["cancionesSeleccionadas"];
         crearPlaylist();
     }
+    else if ($tarea == "cargarCancionInicio")
+    {
+        $_SESSION["cancionReproducir"] = $_POST["cancion"];
+        iframeInicio();
+    }
+    else if ($tarea == "cargarArtista")
+    {
+        $_SESSION["artistaReproducir"] = $_POST["artista"];
+        iframeArtista();
+    }
+    else if ($tarea == "cargarCancion")
+    {
+        $_SESSION["cancionReproducir"] = $_POST["cancion"];
+        iframeCancion();
+    }
 }
 
 

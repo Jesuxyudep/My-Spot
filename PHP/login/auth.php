@@ -20,7 +20,8 @@
             'user-top-read',
             'user-read-recently-played',
             'user-library-modify',
-            'playlist-modify-public'
+            'playlist-modify-public',
+            'user-modify-playback-state'
         ]
     ];
 

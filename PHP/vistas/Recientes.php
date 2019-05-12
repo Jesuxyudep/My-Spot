@@ -37,7 +37,27 @@
     document.addEventListener("DOMContentLoaded",function() {
         $('.infoAlert').click( ocultarInfoAlert );
         $('#añadirCanciones').click( opcionesCancionesPlaylist );
+
+        $('.cancionReciente').click( cargarCancion )
     });
+
+    function cargarCancion ()
+    {
+        var idCancion = $(this).attr('cancion');
+        elemento =  $(this).find('img');
+        resumen =  $(this).find('.resumen');
+
+        $.ajax({
+            data: {"cancion" : idCancion, "operacion" : "cargarCancion"},
+            url: "PHP/cargarContenido.php",
+            type: "post",
+            dataType: 'html',
+            success: function (respuesta) {
+                elemento.replaceWith( respuesta );
+                resumen.css("margin-left", "1em");
+            }
+        });
+    }
 
     function crearPlaylist ()
     {
@@ -87,7 +107,8 @@
                 $('.modal-backdrop.fade.show').css('display', 'none');
 
                 $('div.playlist').click( cargarSeleccionCanciones );
-                $('div.nuevaPlaylist').click( cargarSeleccionCanciones );
+                $('div.nuevaPlaylist i').click( cargarSeleccionCanciones );
+                $('div.nuevaPlaylist span').click( cargarSeleccionCanciones );
             }
         });
 
@@ -101,9 +122,9 @@
         if ( $(this).attr("class") == "nuevaPlaylist" )
         {
             playlist = "nueva";
-            nomPlaylist = prompt("Indica el nombre de tu nueva Playlist", "Mis canciones Recientes - MySpot");
+            nomPlaylist = $('#nombreNuevaPlaylist').val();
 
-            if (nomPlaylist == null)
+            if (nomPlaylist == null || nomPlaylist == undefined || nomPlaylist == "")
             {
                 nomPlaylist = "Mis canciones Recientes - MySpot";
             }

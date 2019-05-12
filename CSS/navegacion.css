@@ -203,7 +203,7 @@
     }
 
     .dropdown-menu:before {
-        content: '';
+        /*content: '';
         display: block;
         position: absolute;
         width: 0;
@@ -212,7 +212,7 @@
         border-right: 16px solid transparent;
         border-bottom: 16px solid #FFF;
         top: -14px;
-        right: 7px;
+        right: 7px;*/
     }
 
     .inicio {

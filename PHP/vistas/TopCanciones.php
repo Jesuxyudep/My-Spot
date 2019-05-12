@@ -58,7 +58,27 @@
 
         $('#añadirCanciones').click( opcionesCancionesPlaylist );
         $('.infoAlert').click( ocultarInfoAlert );
+
+        $('.cancionTop').click( cargarCancion )
     });
+
+    function cargarCancion ()
+    {
+        var idCancion = $(this).attr('cancion');
+        elemento =  $(this).find('img');
+        resumen =  $(this).find('.resumen');
+
+        $.ajax({
+            data: {"cancion" : idCancion, "operacion" : "cargarCancion"},
+            url: "PHP/cargarContenido.php",
+            type: "post",
+            dataType: 'html',
+            success: function (respuesta) {
+                elemento.replaceWith( respuesta );
+                resumen.css("margin-left", "1em");
+            }
+        });
+    }
 
     function cambiarRango(event)
     {
@@ -93,6 +113,7 @@
             success: function (respuesta) {
                 $(".topListado a").remove();
                 $(".topListado").append(respuesta);
+                $('.cancionTop').click( cargarCancion )
             }
         });
     }
@@ -161,7 +182,8 @@
                 $('.modal-backdrop.fade.show').css('display', 'none');
 
                 $('div.playlist').click( cargarSeleccionCanciones );
-                $('div.nuevaPlaylist').click( cargarSeleccionCanciones );
+                $('div.nuevaPlaylist i').click( cargarSeleccionCanciones );
+                $('div.nuevaPlaylist span').click( cargarSeleccionCanciones );
             }
         });
     }
@@ -174,9 +196,9 @@
         if ( $(this).attr("class") == "nuevaPlaylist" )
         {
             playlist = "nueva";
-            nomPlaylist = prompt("Indica el nombre de tu nueva Playlist", "Mi TOP de canciones - MySpot");
+            nomPlaylist = $('#nombreNuevaPlaylist').val();
 
-            if (nomPlaylist == null)
+            if (nomPlaylist == null || nomPlaylist == undefined || nomPlaylist == "")
             {
                 nomPlaylist = "Mi TOP de Canciones - MySpot";
             }

@@ -30,29 +30,29 @@
          <!-- Modal footer -->
          <div class="modal-footer">
  			<div class="enlacesApp">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-3 col-sm-3">
-                            <a class="enlaceFooter github" href="">
-             	                <i class="fab fa-github"></i>
-             	            </a>
-                        </div>
-                        <div class="col-3 col-sm-3">
-             	            <a class="enlaceFooter spotify" href="">
-             	                <i class="fab fa-spotify"></i>
-             	            </a>
-                        </div>
-                        <div class="col-3 col-sm-3">
-             	            <a class="enlaceFooter twitter" href="">
-             	                <i class="fab fa-twitter"></i>
-             	            </a>
-                        </div>
-                        <div class="col-3 col-sm-3">
-             	            <a class="enlaceFooter fwitter" href="https://fwitter.net/">
-             	                <img src="IMG/Fwitter30.png">
-             	            </a>
-                        </div>
-                    </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-3 col-sm-3">
+                            <a class="enlaceFooter github" href="">
+             	                <i class="fab fa-github"></i>
+             	            </a>
+                        </div>
+                        <div class="col-3 col-sm-3">
+             	            <a class="enlaceFooter spotify" href="">
+             	                <i class="fab fa-spotify"></i>
+             	            </a>
+                        </div>
+                        <div class="col-3 col-sm-3">
+             	            <a class="enlaceFooter twitter" href="">
+             	                <i class="fab fa-twitter"></i>
+             	            </a>
+                        </div>
+                        <div class="col-3 col-sm-3">
+             	            <a class="enlaceFooter fwitter" href="https://fwitter.net/">
+             	                <img src="IMG/Fwitter30.png">
+             	            </a>
+                        </div>
+                    </div>
                 </div>
  	        </div>
          </div>

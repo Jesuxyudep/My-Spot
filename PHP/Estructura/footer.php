@@ -1,4 +1,4 @@
-<footer class="page-footer font-small darken-3">
+<footer class="page-footer font-small darken-3" id="social">
 
     <!-- Footer-->
     <div class="container">
@@ -8,7 +8,7 @@
         <div class="col-md-12 py-5">
           <div class="flex-center text-center">
 
-            <h3 style="margin-bottom: 3vh">Entérate de todas las novedades en nuestras redes sociales:</h3>
+            <h3 style="margin-bottom: 3vh">Sé el primero en enterarte de todo a través de:</h3>
 
             <!-- GitHub -->
             <a class="github" href="https://github.com/Jesuxyudep/My-Spot">

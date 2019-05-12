@@ -97,7 +97,8 @@ if ($_SESSION["vista"] == NULL)
     <div class="contenedor">
         <?php require('PHP/Estructura/appNavegation.php'); ?>
         <div class="contenido">
-            <?php
+            <?php
+                echo "<!--p>" . $_SESSION["vista"] . "<p-->";
                 //Cargará el contenido de una vista u otra en función de lo que seleccione el usuario
                 cargarVista($_SESSION["vista"]);
             ?>
@@ -116,18 +117,25 @@ if ($_SESSION["vista"] == NULL)
 <script>
 
     document.addEventListener("DOMContentLoaded",function() {
-        $('a').click( cambiarVista );
+        $('.enlaceNavegacion').click( cambiarVista );
+        $('.navegacion a').click( cambiarVista );
+
         $("#toTop").click( volverArriba );
-        $('#<?php echo $_SESSION["vista"]?>').addClass("activo");
-        $(".perfil").click( mostrarInfoPerfil );
         window.onscroll = function() {mostrarToTop()};
 
+        $('#<?php echo $_SESSION["vista"]?>').addClass("activo");
+
+        $(".perfil").click( mostrarInfoPerfil );
+
         ponerTemaUsuario();
+
     });
 
     function cambiarVista(event)
     {
         var vista =  $(this).attr("id");
+
+        console.log(vista);
 
         $("a.activo").each(function() {
             $(this).removeClass("activo");
