@@ -75,6 +75,16 @@ if ($_POST)
         $_SESSION["cancionReproducir"] = $_POST["cancion"];
         iframeCancion();
     }
+    //Administrar
+    else if ($tarea == "cargarCancionesPlaylist")
+    {
+        $_SESSION["playlist"] = $_POST["playlist"];
+        cargarCancionesPlaylist($_SESSION["playlist"], $_POST["offset"]);
+    }
+    else if ($tarea == "cargarMasCancionesPlaylist")
+    {
+        cargarCancionesPlaylist($_SESSION["playlist"], $_POST["offset"]);
+    }
 }
 
 

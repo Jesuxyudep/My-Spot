@@ -177,6 +177,7 @@ require_once 'operaciones_sql.php';
      {
          $api = crearWebAPI();
          $idUser = $api->me()->id;
+         $contador = 1;
 
          $playlists = $api->getUserPlaylists($idUser, [
             'limit' => 50
@@ -184,10 +185,10 @@ require_once 'operaciones_sql.php';
 
         for ($a = 0; $a < count($playlists->items); $a++)
         {
-            if ($playlists->items[$a]->owner->id == $idUser) //mostrar solamente las playlists que son propiedad de un usuario, ya que una lista que sea de otra persona no la va a poder administrar
+            if ($playlists->items[$a]->owner->id == $idUser || $playlists->items[$a]->collaborative == true) //mostrar solamente las playlists que son propiedad de un usuario, ya que una lista que sea de otra persona no la va a poder administrar
             {
-                echo "<a class='playlist' target='_blank'  href='" . $playlists->items[$a]->external_urls->spotify . "'>";
-                    echo "<span class='numOrden'>" . ($a + 1) . "</span>";
+                echo "<a class='playlist' id='" . $playlists->items[$a]->id . "''>";
+                    echo "<span class='numOrden'>" . $contador . "</span>";
                     echo "<span class='infoPlaylist'>";
                         echo "<img src='" . $playlists->items[$a]->images[0]->url . "'>";
                         echo "<span class='resumen'>";
@@ -197,6 +198,8 @@ require_once 'operaciones_sql.php';
                         echo "</span>";
                     echo "</span>";
                 echo "</a>";
+
+                $contador++;
             }
         }
 
@@ -208,6 +211,39 @@ require_once 'operaciones_sql.php';
                 var_dump($playlist);
             echo "</pre>";
         }*/
+     }
+
+     function cargarCancionesPlaylist($idPlaylist, $offset)
+     {
+         $api = crearWebAPI();
+         $opciones = [
+             "limit" => 50,
+             'offset' => $offset
+         ];
+
+         $canciones = $api->getPlaylistTracks($idPlaylist, $opciones);
+         $contador = 0 + $offset;
+
+         foreach ($canciones->items as $cancion)
+         {
+             echo "<a class='cancionAdministrar' cancion='" . $cancion->track->id . "'>";
+                 echo "<span class='numOrden'>" . ($contador + 1) . "</span>";
+                 echo "<span class='infoCancion'>";
+                     echo "<img src='" . $cancion->track->album->images[2]->url . "'>";
+                     echo "<span class='resumen'>";
+                         echo "<span class='cancion'>" .$cancion->track->name . "</span>";
+                         echo "<span class='separador'>----</span>";
+                         echo "<span class='artista'>" . $cancion->track->artists[0]->name . "</span>";
+                     echo "</span>";
+                 echo "</span>";
+             echo "</a>";
+
+             $contador++;
+
+             /*echo "<pre>"; //Debug
+                 var_dump($cancion);
+             echo "</pre>";*/
+         }
      }
 
      function  mostrarFotoPerfil()

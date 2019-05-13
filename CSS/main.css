@@ -186,7 +186,7 @@ li iframe {
     cursor: pointer;
 }
 
-.cancionTop, .artistaTop, .cancionReciente, .playlist {
+.cancionTop, .artistaTop, .cancionReciente, .playlist, .cancionAdministrar {
     display: flex;
     align-items: center;
     animation-duration: 1s;
@@ -199,13 +199,13 @@ li iframe {
     cursor: pointer
 }
 
-.cancionTop:hover, .artistaTop:hover, .cancionReciente:hover, .playlist:hover {
+.cancionTop:hover, .artistaTop:hover, .cancionReciente:hover, .playlist:hover, .cancionAdministrar:hover {
     text-decoration: none;
     background: #f2f2f2;
     transition: .5s;
 }
 
-.cancionTop *, .artistaTop *, .cancionReciente *, .playlist * {
+.cancionTop *, .artistaTop *, .cancionReciente *, .playlist *, .cancionAdministrar * {
     font-family: 'Rubik', sans-serif;
 }
 
@@ -374,7 +374,7 @@ li iframe {
         box-shadow: none;
     }
 
-    .cancionTop, .artistaTop, .cancionReciente, .playlist {
+    .cancionTop, .artistaTop, .cancionReciente, .playlist, .cancionAdministrar {
         padding: 1em;
         margin: 0 -1em;
         text-align: left;
@@ -436,6 +436,10 @@ li iframe {
         left: -2vw;
         margin-left: -25px;
     }
+
+    footer#social {
+        display: none;
+    }
 }
 
 @media screen and (min-width: 550px) and (max-width:  769px)
@@ -461,7 +465,7 @@ li iframe {
         margin-bottom: 1em;
     }
 
-    .cancionTop, .artistaTop, .cancionReciente, .playlist {
+    .cancionTop, .artistaTop, .cancionReciente, .playlist, .cancionAdministrar{
         padding: 1em 2em;
         margin: 0 -2em;
     }
@@ -785,11 +789,13 @@ body .modal-content *:not(button) {
 .oscuro .cancionTop:hover,
 .oscuro .artistaTop:hover,
 .oscuro .cancionReciente:hover,
+.oscuro .cancionAdministrar:hover,
 .oscuro .playlist:hover,
 .oscuro .playlist:hover .resumen *,
 .oscuro .cancionTop:hover .resumen *,
 .oscuro .artistaTop:hover .resumen *,
 .oscuro .cancionReciente:hover .resumen *,
+.oscuro .cancionAdministrar:hover .resumen *,
 .oscuro .modal-body .cancionReciente:hover *,
 .oscuro .modal-body .playlist:hover *,
 .oscuro .modal-body .opcionCanciones:hover,
