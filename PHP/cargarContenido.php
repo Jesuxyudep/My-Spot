@@ -79,11 +79,31 @@ if ($_POST)
     else if ($tarea == "cargarCancionesPlaylist")
     {
         $_SESSION["playlist"] = $_POST["playlist"];
-        cargarCancionesPlaylist($_SESSION["playlist"], $_POST["offset"]);
+        cargarCancionesPlaylist($_SESSION["playlist"], $_POST["offset"], "inicio");
     }
     else if ($tarea == "cargarMasCancionesPlaylist")
     {
         cargarCancionesPlaylist($_SESSION["playlist"], $_POST["offset"]);
+    }
+    else if ($tarea == "cargarOpcionesAdministracion")
+    {
+        cargarOpcionesAdministracion();
+    }
+    else if ($tarea == "tareaAdministracion")
+    {
+        $_SESSION["tarea"] = $_POST["tarea"];
+
+        if ($_SESSION["tarea"] == "traspasarCanciones")
+        {
+            $_SESSION["playlist"] = $_POST["playlist"];
+            $_SESSION["nombrePlaylist"] = $_POST["nombrePlaylist"];
+        }
+        else
+        {
+            $_SESSION["cancionesSeleccionadasAdministrar"] = $_POST["cancionesSeleccionadasAdministrar"];
+        }
+
+        tareaAdministracion($_SESSION["playlist"], $_SESSION["tarea"], $_SESSION["cancionesSeleccionadasAdministrar"]);
     }
 }
 

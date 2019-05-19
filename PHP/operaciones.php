@@ -185,7 +185,7 @@ require_once 'operaciones_sql.php';
 
         for ($a = 0; $a < count($playlists->items); $a++)
         {
-            if ($playlists->items[$a]->owner->id == $idUser || $playlists->items[$a]->collaborative == true) //mostrar solamente las playlists que son propiedad de un usuario, ya que una lista que sea de otra persona no la va a poder administrar
+            if ($playlists->items[$a]->owner->id == $idUser) //mostrar solamente las playlists que son propiedad de un usuario, ya que una lista que sea de otra persona no la va a poder administrar
             {
                 echo "<a class='playlist' id='" . $playlists->items[$a]->id . "''>";
                     echo "<span class='numOrden'>" . $contador . "</span>";
@@ -213,7 +213,7 @@ require_once 'operaciones_sql.php';
         }*/
      }
 
-     function cargarCancionesPlaylist($idPlaylist, $offset)
+     function cargarCancionesPlaylist($idPlaylist, $offset, $accion = NULL)
      {
          $api = crearWebAPI();
          $opciones = [
@@ -224,26 +224,44 @@ require_once 'operaciones_sql.php';
          $canciones = $api->getPlaylistTracks($idPlaylist, $opciones);
          $contador = 0 + $offset;
 
-         foreach ($canciones->items as $cancion)
+         if ( count($canciones->items) > 0 )
          {
-             echo "<a class='cancionAdministrar' cancion='" . $cancion->track->id . "'>";
-                 echo "<span class='numOrden'>" . ($contador + 1) . "</span>";
-                 echo "<span class='infoCancion'>";
-                     echo "<img src='" . $cancion->track->album->images[2]->url . "'>";
-                     echo "<span class='resumen'>";
-                         echo "<span class='cancion'>" .$cancion->track->name . "</span>";
-                         echo "<span class='separador'>----</span>";
-                         echo "<span class='artista'>" . $cancion->track->artists[0]->name . "</span>";
+             if ($accion == "inicio")
+             {
+                 echo '<div class="container" style="margin: 0; margin-bottom: 2vh; max-width: 100%">
+                         <div class="row">
+                             <div class="col-12 col-sm-9 columnaInfoAdministrar">
+                                 <span id="infoAdministrar">Selecciona las canciones a administrar y pulsa sobre el botón para indicar la tarea a realizar</span>
+                             </div>
+                             <div class="col-12 col-sm-3 columnaInfoAdministrar">
+                                 <button id="administrarCanciones" style="float:right; width: 100%">Administrar</button>
+                             </div>
+                         </div>
+                     </div>';
+            }
+
+             foreach ($canciones->items as $cancion)
+             {
+                 echo "<a class='cancionAdministrar' cancion='" . $cancion->track->id . "'>";
+                     echo "<span class='numOrden'>" . ($contador + 1) . "</span>";
+                     echo "<span class='infoCancion'>";
+                         echo "<img src='" . $cancion->track->album->images[2]->url . "'>";
+                         echo "<span class='resumen'>";
+                             echo "<span class='cancion'>" .$cancion->track->name . "</span>";
+                             echo "<span class='separador'>----</span>";
+                             echo "<span class='artista'>" . $cancion->track->artists[0]->name . "</span>";
+                         echo "</span>";
                      echo "</span>";
-                 echo "</span>";
-             echo "</a>";
+                 echo "</a>";
 
-             $contador++;
+                 $contador++;
 
-             /*echo "<pre>"; //Debug
-                 var_dump($cancion);
-             echo "</pre>";*/
-         }
+                 /*echo "<pre>"; //Debug
+                     var_dump($cancion);
+                 echo "</pre>";*/
+             }
+        }
+
      }
 
      function  mostrarFotoPerfil()
@@ -304,10 +322,6 @@ require_once 'operaciones_sql.php';
              /*echo "<pre>";
                 var_dump($playlists);
              echo "</pre>";*/
-
-         //getRecommendations()
-
-         /*Obtener IDS de los 5 artistas preferidos y pasar como parámetro. Obtener IDS top 5 de canciones también*/
      }
 
      function obtenerRecomendaciones ( $base )
@@ -900,14 +914,24 @@ require_once 'operaciones_sql.php';
                       </div>';
      }
 
-     function crearPlaylist ()
+     function crearPlaylist ($lugar = NULL)
      {
         $api = crearWebAPI();
-        $seleccionadas = $_SESSION["cancionesSeleccionadas"];
-        $nomPlaylistNueva = $_SESSION["nombrePlaylist"];
+        $seleccionadas = [];
+
+        if ($lugar == "administrar")
+        {
+            $seleccionadas = $_SESSION["cancionesSeleccionadasAdministrar"];
+        }
+        else
+        {
+            $seleccionadas = $_SESSION["cancionesSeleccionadas"];
+        }
 
         if ($_SESSION["playlist"] == "nueva")
         {
+            $nomPlaylistNueva = $_SESSION["nombrePlaylist"];
+
             $api->createPlaylist([
                 'name' => $nomPlaylistNueva
             ]);
@@ -935,10 +959,6 @@ require_once 'operaciones_sql.php';
         }
         else
         {
-            $playlists = $api->getUserPlaylists($api->me()->id, [
-                'limit' => 50
-            ]);
-
             for ($a = 0; $a < count($seleccionadas); $a++)
             {
                 $api->addPlaylistTracks($_SESSION["playlist"], [
@@ -946,5 +966,199 @@ require_once 'operaciones_sql.php';
                 ]);
             }
         }
+     }
+
+     function cargarOpcionesAdministracion ()
+     {
+         echo '<div class="modal fade" id="administrarPlaylistModal">
+                 <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                   <div class="modal-content">
+
+                     <div class="modal-header">
+                       <h1>Indica que tarea quieres realizar</h1>
+                       <button type="button" class="close" data-dismiss="modal">×</button>
+                     </div>
+
+                     <div class="modal-body">
+
+                         <div class="opcionAdministrar" id="borrarCanciones">
+                             <i class="fas fa-trash"></i></i>
+                             <span>Borrar las canciones seleccionadas</span>
+                         </div>
+                         <hr>
+                         <div class="opcionAdministrar" id="reemplazarCanciones">
+                             <i class="far fa-star"></i>
+                             <span>Reemplazar las canciones por otras nuevas</span>
+                         </div>
+                         <hr>
+                         <div class="opcionAdministrar" id="listasTraspasarCanciones">
+                             <i class="fas fa-route"></i>
+                             <span>Añadir las canciones a otra de mis listas</span>
+                         </div>
+
+                     </div>
+
+                     <!-- Modal footer -->
+                     <div class="modal-footer">
+
+                     </div>
+
+                   </div>
+                 </div>
+               </div>';
+     }
+
+     function randomizarRecomendacionesAdministrar ( $canciones ) //Devolverá ID aleatorios y no repetidos de objetos del array pasado como parámetro
+     {
+         $numeroRecomendaciones = 2;
+         $posicionesRecogidas = [];
+         $idsRecomendaciones = [];
+
+         for ($a = 0; $a < $numeroRecomendaciones; $a++)
+         {
+             $conmutador = false;
+             $posicionRecomendacion = round(rand(0, count($canciones)), 0);
+
+             if ( count($posicionesRecogidas) > 0 )
+             {
+                 foreach ($posicionesRecogidas as $posicion)
+                 {
+                    if ($posicion == $posicionRecomendacion)
+                    {
+                        $conmutador = true;
+                    }
+                 }
+
+                 if ($conmutador)
+                 {
+                     $a--;
+                 }
+                 else
+                 {
+                     if ($canciones[$posicionRecomendacion] == NULL)
+                     {
+                          $a--;
+                     }
+                     else
+                     {
+                         $posicionesRecogidas[] = $posicionRecomendacion;
+                         $idsRecomendaciones[] = $canciones[$posicionRecomendacion];
+                     }
+                 }
+             }
+             else
+             {
+                 if ($canciones[$posicionRecomendacion] == NULL)
+                 {
+                      $a--;
+                 }
+                 else
+                 {
+                     $posicionesRecogidas[] = $posicionRecomendacion;
+                     $idsRecomendaciones[] = $canciones[$posicionRecomendacion];
+                 }
+             }
+         }
+
+         return $idsRecomendaciones;
+     }
+
+     function borradoMultiple ($playlist, $cancionesSeleccionadas)
+     {
+         $api = crearWebAPI();
+
+         $cancionesBorrar = [];
+
+         foreach ($cancionesSeleccionadas as $cancionID)
+         {
+             $arrayID = [
+                 "id" => $cancionID
+             ];
+
+            $cancionesBorrar[] = $arrayID;
+         }
+
+         if ( count($cancionesBorrar) > 100 )
+         {
+             while ( count($cancionesBorrar) > 0 )
+             {
+                 $borradoParcial = array_slice($cancionesBorrar, 0, 99);
+
+                 $cancionesAdministrar = [
+                    "tracks"  => $borradoParcial
+                 ];
+
+                 $api->deletePlaylistTracks($playlist, $cancionesAdministrar); //Borrado de las canciones
+             }
+         }
+         else
+         {
+             $cancionesAdministrar = [
+                "tracks"  => $cancionesBorrar
+             ];
+
+             $api->deletePlaylistTracks($playlist, $cancionesAdministrar); //Borrado de las canciones
+         }
+     }
+
+     function tareaAdministracion ($playlist, $tarea, $cancionesSeleccionadas)
+     {
+         $api = crearWebAPI();
+
+        if ($tarea == "borrarCanciones")
+        {
+            borradoMultiple($playlist, $cancionesSeleccionadas);
+            cargarCancionesPlaylist($_SESSION["playlist"], 0, "inicio"); //Cargar otra vez la lista una vez borradas las canciones
+        }
+        else if ($tarea == "listasTraspasarCanciones")
+        {
+            cargarOpcionesPlaylists();
+        }
+        else if ($tarea == "traspasarCanciones")
+        {
+            crearPlaylist("administrar"); //Reutilización de la función para añadir las canciones a otra lista o a una nueva
+        }
+        else if ($tarea == "reemplazarCanciones")
+        {
+            if ( count($cancionesSeleccionadas) > 1 )
+            {
+                $idsSemillaCanciones = randomizarRecomendacionesAdministrar( $cancionesSeleccionadas );
+
+                $limiteRecomendaciones = 0;
+
+                if ( count($cancionesSeleccionadas) < 100 )
+                {
+                    $limiteRecomendaciones = count($cancionesSeleccionadas);
+                }
+                else
+                {
+                    $limiteRecomendaciones = 100;
+                }
+
+                $opcionesRecomendaciones = [
+                    "seed_tracks" => $idsSemillaCanciones,
+                    "limit" => $limiteRecomendaciones
+                ];
+
+                $recomendaciones = $api->getRecommendations($opcionesRecomendaciones);
+
+                borradoMultiple($playlist, $cancionesSeleccionadas);
+
+                foreach ($recomendaciones->tracks as $cancion)
+                {
+                    $api->addPlaylistTracks($playlist, [
+                        $cancion->id
+                    ]);
+                }
+
+                cargarCancionesPlaylist($_SESSION["playlist"], 0, "inicio"); //Cargar otra vez la lista una vez reemplazadas las canciones
+            }
+            else
+            {
+                //Indicar al usuario que necesita seleccionar al menos 2 canciones para que las recomendaciones funcionen
+            }
+
+        }
+
      }
 ?>

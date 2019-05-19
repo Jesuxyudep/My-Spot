@@ -175,7 +175,8 @@ li iframe {
 }
 
 .rangosTiempo button,
-.recientesCrear button {
+.recientesCrear button,
+.columnaInfoAdministrar button {
     background: transparent;
     font-family: 'Rubik', sans-serif;
     font-weight: 600;
@@ -265,7 +266,8 @@ li iframe {
 }
 
 .opcionesCrear button,
-.recientesCrear button {
+.recientesCrear button,
+.columnaInfoAdministrar button {
     background-color: #1e552d;
     padding: .5em;
     color: white;
@@ -279,7 +281,8 @@ li iframe {
 }
 
 .rangosTiempo button,
-.recientesCrear button {
+.recientesCrear button,
+.columnaInfoAdministrar button {
     font-size: 1.2em;
 }
 
@@ -403,7 +406,8 @@ li iframe {
         padding: 0;
     }
 
-    .rangosTiempo button {
+    .rangosTiempo button,
+    .columnaInfoAdministrar button {
         font-size: 0.7em;
         padding-left: 0;
     }
@@ -440,11 +444,20 @@ li iframe {
     footer#social {
         display: none;
     }
+
+    .columnaInfoAdministrar #infoAdministrar {
+        font-size: 1em !important;
+    }
+
+    .columnaInfoAdministrar {
+        margin-top: 2vh !important;
+    }
 }
 
 @media screen and (min-width: 550px) and (max-width:  769px)
 {
-    .rangosTiempo button {
+    .rangosTiempo button,
+    .columnaInfoAdministrar button {
         font-size: 0.9em;
         padding-left: 0;
     }
@@ -488,7 +501,8 @@ li iframe {
 
 @media screen and (min-width: 770px) and (max-width: 900px)
 {
-    .rangosTiempo button {
+    .rangosTiempo button,
+    .columnaInfoAdministrar button {
         font-size: 1.1em;
     }
 }
@@ -698,12 +712,12 @@ li iframe {
 
 /* Estilos para los modales de creación de Playlists */
 .nuevaPlaylist, .opcionCanciones, .todasLasCanciones,
-.cancionSeleccionada,  #crearPlaylistModal .playlist, #crearPlaylistModal .cancionReciente {
+.cancionSeleccionada,  #crearPlaylistModal .playlist, #crearPlaylistModal .cancionReciente, #administrarPlaylistModal .opcionAdministrar {
     cursor: pointer;
 }
 
 .nuevaPlaylist:hover, .opcionCanciones:hover, .todasLasCanciones:hover,
-#crearPlaylistModal .playlist:hover {
+#crearPlaylistModal .playlist:hover, #administrarPlaylistModal .opcionAdministrar:hover {
     background: #f2f2f2;
     transition: .5s;
 }
@@ -712,18 +726,18 @@ li iframe {
     background: #c2c2c2;
 }
 
-.nuevaPlaylist, .opcionCanciones, .todasLasCanciones {
+.nuevaPlaylist, .opcionCanciones, .todasLasCanciones, .opcionAdministrar {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.nuevaPlaylist i, .opcionCanciones i, .todasLasCanciones i {
+.nuevaPlaylist i, .opcionCanciones i, .todasLasCanciones i, .opcionAdministrar i {
     font-size: 2em;
     margin-right: 2vw;
 }
 
-.nuevaPlaylist span, .opcionCanciones span, .todasLasCanciones span {
+.nuevaPlaylist span, .opcionCanciones span, .todasLasCanciones span, .opcionAdministrar span {
     font-size: 1.3em;
     font-weight: bold;
 }
@@ -786,6 +800,11 @@ body .modal-content *:not(button) {
     color: white !important;
 }
 
+.oscuro .cancionSeleccionada.cancionAdministrar span {
+    background: transparent !important;
+    color: black !important;
+}
+
 .oscuro .cancionTop:hover,
 .oscuro .artistaTop:hover,
 .oscuro .cancionReciente:hover,
@@ -799,6 +818,8 @@ body .modal-content *:not(button) {
 .oscuro .modal-body .cancionReciente:hover *,
 .oscuro .modal-body .playlist:hover *,
 .oscuro .modal-body .opcionCanciones:hover,
+.oscuro .modal-body .opcionAdministrar:hover *,
+.oscuro .modal-body .opcionAdministrar:hover,
 .oscuro .modal-body .opcionCanciones:hover * {
     background: grey !important;
 }
@@ -807,6 +828,7 @@ body .modal-content *:not(button) {
 .oscuro .tituloInicio,
 .oscuro .modal-header h1, .oscuro .modal-body h2,
 .oscuro .activo *,
+.oscuro #infoAdministrar,
 .dropdown-menu-right a:hover, .dropdown-menu-right span:hover{
     color: #00a200 !important;
 }
@@ -1107,4 +1129,17 @@ figure:hover .grid-button-wrapper {
      #nombreNuevaPlaylist {
          left: 0em !important;
      }
+ }
+
+ /*Vista Administrar*/
+ .columnaInfoAdministrar {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+ }
+
+ #infoAdministrar {
+     font-weight: bold !important;
+     font-size: 1.3em !important;
+     color: black;
  }

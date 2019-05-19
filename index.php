@@ -150,7 +150,7 @@ if ($_SESSION["vista"] == NULL)
 
     function mostrarToTop ()
     {
-          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20)
+          if (document.body.scrollTop > 1 || document.documentElement.scrollTop > 1)
           {
             $("#toTop").show();
           }
