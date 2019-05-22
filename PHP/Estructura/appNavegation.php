@@ -8,7 +8,7 @@
             <h1>MySpot</h1>
         </a>
         <a class="enlaceNavegacion" id="TopCanciones" href="">
-            <i class="far fa-heart"></i>
+            <i class="fas fa-heartbeat"></i>
             <span class="etiquetaNavegacion">Top Canciones</span>
         </a>
         <a class="enlaceNavegacion" id="TopArtistas" href="">
@@ -16,11 +16,11 @@
             <span class="etiquetaNavegacion">Top artistas</span>
         </a>
         <a class="enlaceNavegacion" id="Recientes" href="">
-            <i class="far fa-clock"></i>
+            <i class="fas fa-clock"></i>
             <span class="etiquetaNavegacion">Recientes</span>
         </a>
         <a class="enlaceNavegacion" id="Administrar" href="">
-            <i class="fab fa-wpforms"></i>
+            <i class="fas fa-cogs"></i>
             <span class="etiquetaNavegacion">Administrar</span>
         </a>
         <?php

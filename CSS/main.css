@@ -33,8 +33,12 @@ body * {
 
 #toTop:hover {
     background-color: white;
-    color: black;
     transition: .3s;
+}
+
+#toTop:hover i,
+.oscuro #toTop:hover i {
+    color: #0d9606 !important;
 }
 
 .navegacion a:hover {
@@ -441,8 +445,22 @@ li iframe {
         margin-left: -25px;
     }
 
+    figcaption a {
+        z-index: 0 !important;
+    }
+
+    figcaption .enlaceNavegacion {
+        position: absolute !important;
+        left: 0 !important;
+        margin-left: 0 !important;
+    }
+
     footer#social {
         display: none;
+    }
+
+    footer#social.footerMovilVisible {
+        display: block;
     }
 
     .columnaInfoAdministrar #infoAdministrar {
@@ -810,11 +828,6 @@ body .modal-content *:not(button) {
 .oscuro .cancionReciente:hover,
 .oscuro .cancionAdministrar:hover,
 .oscuro .playlist:hover,
-.oscuro .playlist:hover .resumen *,
-.oscuro .cancionTop:hover .resumen *,
-.oscuro .artistaTop:hover .resumen *,
-.oscuro .cancionReciente:hover .resumen *,
-.oscuro .cancionAdministrar:hover .resumen *,
 .oscuro .modal-body .cancionReciente:hover *,
 .oscuro .modal-body .playlist:hover *,
 .oscuro .modal-body .opcionCanciones:hover,
@@ -822,6 +835,18 @@ body .modal-content *:not(button) {
 .oscuro .modal-body .opcionAdministrar:hover,
 .oscuro .modal-body .opcionCanciones:hover * {
     background: grey !important;
+}
+
+.oscuro .playlist:hover .resumen *,
+.oscuro .cancionTop:hover .resumen *,
+.oscuro .artistaTop:hover .resumen *,
+.oscuro .cancionReciente:hover .resumen *,
+.oscuro .cancionAdministrar:hover .resumen *,
+.oscuro .modal-content .cancionTop:hover *:not(button),
+.oscuro .modal-content .artistaTop:hover *:not(button),
+.oscuro .modal-content .cancionReciente:hover *:not(button),
+.oscuro .modal-content .playlist:hover *:not(button) {
+    background: transparent !important;
 }
 
 .oscuro i,
@@ -1142,4 +1167,8 @@ figure:hover .grid-button-wrapper {
      font-weight: bold !important;
      font-size: 1.3em !important;
      color: black;
+ }
+
+ iframe {
+     border: none !important;
  }

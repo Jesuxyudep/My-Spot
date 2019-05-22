@@ -129,6 +129,8 @@ if ($_SESSION["vista"] == NULL)
 
         ponerTemaUsuario();
 
+        footerMovil();
+
     });
 
     function cambiarVista(event)
@@ -209,6 +211,20 @@ if ($_SESSION["vista"] == NULL)
         else if(temaAlmacenado == null)
         {
             localStorage.setItem("tema", "oscuro");
+        }
+    }
+
+    function footerMovil ()
+    {
+        var vista = $('a.activo').attr('id');
+
+        if (vista == "App")
+        {
+            $('#social').addClass('footerMovilVisible');
+        }
+        else
+        {
+            $('#social').removeClass('footerMovilVisible');
         }
     }
 
